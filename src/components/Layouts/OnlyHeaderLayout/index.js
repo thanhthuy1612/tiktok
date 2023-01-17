@@ -1,10 +1,11 @@
 import Header from '../components/Header';
+import styles from './OnlyHeaderLayout.module.scss';
 
 export default function OnlyHeaderLayout({ children }) {
     return (
-        <div>
+        <div className={styles.wrapper}>
             <Header />
-            <div>{children}</div>
+            <div className={styles.container}>{children}</div>
         </div>
     );
 }
