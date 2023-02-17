@@ -7,11 +7,12 @@ import { useEffect, useRef, useState } from 'react';
 import { Wrapper as PopperWrapper } from '../Popper';
 import SearchAccount from '../SearchAccount';
 import Button from '../Button';
+import Menu from '../Popper/Menu';
+import { MenuItems } from '~/components/constants/Menu';
 
 export default function Header() {
     const [input, setInput] = useState('');
     const [isClose, setIsClose] = useState('0');
-    const [isShow, setIsShow] = useState(false);
     const [searchResult, setSearchResult] = useState([]);
     const searchRef = useRef();
     const handleClose = () => {
@@ -19,16 +20,14 @@ export default function Header() {
         setIsClose('0');
         searchRef.current.focus();
     };
-    const handleOpen = () => {
-        setIsShow(!isShow);
-    };
     const handleChange = (e) => {
         setInput(e.target.value);
     };
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2]);
-        }, 1000);
+        // setTimeout(() => {
+        //     setSearchResult([1, 2]);
+        // }, 1000);
+        setSearchResult([1]);
     }, []);
     useEffect(() => {
         if (input !== '') {
@@ -49,6 +48,8 @@ export default function Header() {
                         <div className={styles.searchResult} tabIndex="-1" {...attrs}>
                             <PopperWrapper>
                                 <h4 className={styles.searchTitle}>Accounts</h4>
+                                <SearchAccount />
+                                <SearchAccount />
                                 <SearchAccount />
                             </PopperWrapper>
                         </div>
@@ -79,22 +80,11 @@ export default function Header() {
                 <div className={styles.actions}>
                     <Button text>Upload</Button>
                     <Button primary>Log in</Button>
-                    <Tippy
-                        interactive
-                        visible={isShow}
-                        render={(attrs) => (
-                            <div className={styles.searchResult} tabIndex="-1" {...attrs}>
-                                <PopperWrapper>
-                                    <h4 className={styles.searchTitle}>Accounts</h4>
-                                    <SearchAccount />
-                                </PopperWrapper>
-                            </div>
-                        )}
-                    >
-                        <button className={styles.moreBTN} onClick={handleOpen}>
+                    <Menu items={MenuItems}>
+                        <button className={styles.moreBTN}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>
-                    </Tippy>
+                    </Menu>
                 </div>
             </div>
         </header>
