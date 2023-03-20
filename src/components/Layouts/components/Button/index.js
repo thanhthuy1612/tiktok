@@ -51,6 +51,9 @@ export default function Button({
         case 'textColor':
             classes = classes.concat(' ', `${styles.textColor}`);
             break;
+        case 'menu':
+            classes = classes.concat(' ', `${styles.menu}`);
+            break;
         default:
             break;
     }

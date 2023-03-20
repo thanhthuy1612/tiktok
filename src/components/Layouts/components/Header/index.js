@@ -15,6 +15,7 @@ export default function Header() {
     const [isClose, setIsClose] = useState('0');
     const [searchResult, setSearchResult] = useState([]);
     const searchRef = useRef();
+    const handleChangeMenu = () => {};
     const handleClose = () => {
         setInput('');
         setIsClose('0');
@@ -36,7 +37,7 @@ export default function Header() {
             setIsClose('0');
         }
     }, [input]);
-    console.log(searchResult);
+
     return (
         <header className={styles.wrapper}>
             <div className={styles.inner}>
@@ -80,7 +81,7 @@ export default function Header() {
                 <div className={styles.actions}>
                     <Button text>Upload</Button>
                     <Button primary>Log in</Button>
-                    <Menu items={MenuItems}>
+                    <Menu items={MenuItems} onChange={handleChangeMenu}>
                         <button className={styles.moreBTN}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>

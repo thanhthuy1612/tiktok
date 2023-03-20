@@ -1,9 +1,8 @@
-import styles from './Menu.module.scss';
 import Button from '../../Button';
 
-export default function MenuItem({ data }) {
+export default function MenuItem({ data, onClick }) {
     return (
-        <Button className={styles.menuItem} to={data.to} leftIcon={data.icon}>
+        <Button className="menu" to={data.to} leftIcon={data.icon} onClick={onClick}>
             {data.title}
         </Button>
     );
